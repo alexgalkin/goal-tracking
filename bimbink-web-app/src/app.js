@@ -1,5 +1,3 @@
-// This file initializes the web application and sets up Firebase
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';

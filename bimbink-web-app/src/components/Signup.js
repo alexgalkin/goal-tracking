@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useHistory } from 'react-router-dom';
+import '../styles/Signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -19,8 +20,8 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
+    <div className="signup-container">
+      <h5>Signup</h5>
       <form onSubmit={handleSignup}>
         <input
           type="email"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { auth } from '../firebase';
 import { useHistory } from 'react-router-dom';
+import '../styles/Profile.css';
 
 const Profile = () => {
   const user = auth.currentUser;
@@ -12,7 +13,7 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Profile</h2>
       {user && (
         <div>

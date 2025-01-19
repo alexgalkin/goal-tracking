@@ -9,7 +9,9 @@ module.exports = {
   resolve: {
     alias: {
       'firebase/app': path.resolve(__dirname, 'node_modules/firebase/app/dist/index.cjs.js'),
-      'firebase/auth': path.resolve(__dirname, 'node_modules/firebase/auth/dist/index.cjs.js')
+      'firebase/auth': path.resolve(__dirname, 'node_modules/firebase/auth/dist/index.cjs.js'),
+      'firebase/firestore': path.resolve(__dirname, 'node_modules/firebase/firestore/dist/index.cjs.js'),
+      'firebase/analytics': path.resolve(__dirname, 'node_modules/firebase/analytics/dist/index.cjs.js')
     }
   },
   module: {

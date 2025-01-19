@@ -10,18 +10,43 @@
   "dependencies": {
     "firebase": "^9.0.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^5.2.0",
+    "reactfire": "^4.2.3"
   },
   "devDependencies": {
-    "webpack": "^5.0.0",
-    "webpack-cli": "^4.0.0",
-    "webpack-dev-server": "^3.0.0",
-    "babel-loader": "^8.0.0",
-    "babel-core": "^7.0.0",
-    "babel-preset-env": "^1.0.0",
-    "babel-preset-react": "^1.0.0"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.24.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
   },
-  "keywords": ["devchallenge", "githubchallenge", "webdev", "ai", "goaltracking", "wishes"],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "keywords": [
+    "devchallenge",
+    "githubchallenge",
+    "webdev",
+    "ai",
+    "goaltracking",
+    "wishes"
+  ],
   "author": "",
   "license": "MIT"
 }

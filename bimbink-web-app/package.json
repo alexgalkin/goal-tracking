@@ -1,5 +1,5 @@
 {
-  "name": "bimbink-web-app",
+  "name": "bimbink-goal-tracker",
   "version": "1.0.0",
   "description": "bimbink goal tracking web app",
   "main": "src/app.js",

@@ -4,12 +4,13 @@ import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAiuiWgtEUVns1QpzM1q3kTNnMNlJ0fCe4",
+  authDomain: "bimbink-goal-tracker.firebaseapp.com",
+  projectId: "bimbink-goal-tracker",
+  storageBucket: "bimbink-goal-tracker.firebasestorage.app",
+  messagingSenderId: "778793982067",
+  appId: "1:778793982067:web:098271cf24e0ca2b5bf206",
+  measurementId: "G-CS5XQ6TVHB",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -17,4 +18,4 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const analytics = getAnalytics(app);
 
-export { db, auth };
+export { db, auth, analytics };

@@ -33,7 +33,7 @@ my-web-app
 
 2. Navigate to the project directory:
    ```
-   cd bimbink-web-app
+   cd bimbink-goal-tracker
    ```
 
 3. Install the dependencies:

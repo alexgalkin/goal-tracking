@@ -6,6 +6,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import ErrorPage from './ErrorPage';
+import PointBGoals from './PointBGoals';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -46,6 +47,9 @@ const App = () => {
         </Route>
         <Route path="/profile">
           {user ? <Profile /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/point-b-goals">
+          <PointBGoals />
         </Route>
         <Route component={ErrorPage} />
       </Switch>

@@ -14,7 +14,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h2>Profile</h2>
+      <h5>Profile</h5>
       {user && (
         <div>
           <p>Email: {user.email}</p>

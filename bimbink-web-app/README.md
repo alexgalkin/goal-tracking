@@ -57,7 +57,8 @@ bimbink-web-app
 
 ## Contributing
 
-Feel free to submit issues or pull requests for improvements or bug fixes.
+- Feel free to submit issues or pull requests for improvements or bug fixes.
+- NOTE: Current `Development` notes can be found under the `./docs` folder (e.g. [Favicon generator](../docs/DEVELOPMENT.md) )
 
 ## License
 

@@ -1,0 +1,41 @@
+/* src/components/PointBGoals.css */
+.goal-row {
+  margin-bottom: 10px; /* Less space between rows */
+}
+
+.input-field.col.s2 select {
+  width: 100%; /* Ensure the dropdown takes full width */
+}
+
+.input-field.col.s3 input {
+  width: 100%; /* Ensure the input fields take full width */
+}
+
+.collection .badge {
+  background-color: #0D47A1; /* Dark blue color for badges */
+  color: white;
+}
+
+.button-container {
+  margin-top: 20px; /* Add space between buttons and form */
+}
+
+.button-container .btn {
+  margin-right: 10px; /* Add space between buttons */
+}
+
+.collection-item {
+  position: relative;
+}
+
+.remove-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.collection-item:hover .remove-button {
+  display: block;
+}

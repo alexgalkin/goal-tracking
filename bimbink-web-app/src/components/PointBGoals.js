@@ -1,29 +1,42 @@
 // src/components/PointBGoals.js
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase'; // Ensure you have firebase configured
-import { collection, addDoc, getDocs, writeBatch } from 'firebase/firestore';
+import { db, auth } from '../firebase'; // Ensure you have firebase configured
+import { collection, addDoc, getDocs, writeBatch, doc, query, where, deleteDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import './PointBGoals.css'; // Import custom CSS
 
 const PointBGoals = () => {
   const [goals, setGoals] = useState([]);
   const [newGoals, setNewGoals] = useState([{ category: '', pointA: '', pointB: '', quarter: 'Q4' }]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchGoals = async () => {
-      const querySnapshot = await getDocs(collection(db, 'goals'));
-      if (isMounted) {
-        const goalsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setGoals(goalsData);
-      }
-    };
-
-    fetchGoals();
-
-    return () => {
-      isMounted = false;
-    };
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      let isMounted = true;
+
+      const fetchGoals = async () => {
+        const q = query(collection(db, 'point-b-goals'), where('userId', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+        if (isMounted) {
+          const goalsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          setGoals(goalsData);
+        }
+      };
+
+      fetchGoals();
+
+      return () => {
+        isMounted = false;
+      };
+    }
+  }, [user]);
 
   const handleAddRow = () => {
     setNewGoals([...newGoals, { category: '', pointA: '', pointB: '', quarter: 'Q4' }]);
@@ -35,16 +48,30 @@ const PointBGoals = () => {
   };
 
   const handleSave = async () => {
-    const batch = writeBatch(db);
-    newGoals.forEach((goal) => {
-      const docRef = collection(db, 'goals').doc();
-      batch.set(docRef, goal);
-    });
-    await batch.commit();
-    setNewGoals([{ category: '', pointA: '', pointB: '', quarter: 'Q4' }]);
-    const querySnapshot = await getDocs(collection(db, 'goals'));
-    const goalsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    setGoals(goalsData);
+    console.log('handleSave called');
+    if (user) {
+      console.log('User is authenticated:', user.uid);
+      const batch = writeBatch(db);
+      newGoals.forEach((goal) => {
+        const docRef = doc(collection(db, 'point-b-goals')); // Create a new document reference
+        batch.set(docRef, { ...goal, userId: user.uid });
+      });
+      await batch.commit();
+      console.log('Batch committed');
+      setNewGoals([{ category: '', pointA: '', pointB: '', quarter: 'Q4' }]);
+      const q = query(collection(db, 'point-b-goals'), where('userId', '==', user.uid));
+      const querySnapshot = await getDocs(q);
+      const goalsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setGoals(goalsData);
+      console.log('Goals updated:', goalsData);
+    } else {
+      console.log('User is not authenticated');
+    }
+  };
+
+  const handleRemove = async (id) => {
+    await deleteDoc(doc(db, 'point-b-goals', id));
+    setGoals(goals.filter(goal => goal.id !== id));
   };
 
   return (
@@ -53,14 +80,15 @@ const PointBGoals = () => {
       <ul className="collection">
         {goals.map(goal => (
           <li key={goal.id} className="collection-item">
-            {goal.category} - {goal.pointA} - {goal.pointB} - {goal.quarter}
+            {goal.category} - {goal.pointA} - {goal.pointB} - <span className="badge">{goal.quarter}</span>
+            <button className="btn red remove-button" onClick={() => handleRemove(goal.id)}>Remove</button>
           </li>
         ))}
       </ul>
       <h5>Add New Goals</h5>
       {newGoals.map((goal, index) => (
-        <div key={index} className="row">
-          <div className="input-field col s3">
+        <div key={index} className="row goal-row">
+          <div className="input-field col s2">
             <select
               value={goal.category}
               onChange={(e) => handleInputChange(index, 'category', e.target.value)}
@@ -90,7 +118,7 @@ const PointBGoals = () => {
               placeholder="Point B"
             />
           </div>
-          <div className="input-field col s3">
+          <div className="input-field col s2">
             <select
               value={goal.quarter}
               onChange={(e) => handleInputChange(index, 'quarter', e.target.value)}
@@ -104,8 +132,10 @@ const PointBGoals = () => {
           </div>
         </div>
       ))}
-      <button className="btn" onClick={handleAddRow}>Plus</button>
-      <button className="btn" onClick={handleSave}>Save</button>
+      <div className="button-container">
+        <button className="btn light-blue lighten-2" onClick={handleAddRow}>Add More</button>
+        <button className="btn blue darken-2" onClick={handleSave}>Save</button>
+      </div>
     </div>
   );
 };

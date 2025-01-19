@@ -22,10 +22,15 @@ const App = () => {
     <Router>
       <nav className="navbar">
         <div className="nav-wrapper">
-          <a href="/" className="brand-logo">bimbink</a>
+          <Link to="/" className="brand-logo">
+            <img src="/logo.jpg" alt="Bimbink Logo" style={{ height: '50px', verticalAlign: 'middle' }} />
+          </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             {user ? (
-              <li><Link to="/profile">Profile</Link></li>
+              <>
+                <li><Link to="/point-b-goals">Point B</Link></li>
+                <li><Link to="/profile">Profile</Link></li>
+              </>
             ) : (
               <>
                 <li><Link to="/login">Login</Link></li>

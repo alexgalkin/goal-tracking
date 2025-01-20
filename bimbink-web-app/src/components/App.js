@@ -7,6 +7,7 @@ import Signup from './Signup';
 import Profile from './Profile';
 import ErrorPage from './ErrorPage';
 import PointBGoals from './PointBGoals';
+import MyWishes from './MyWishes';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -29,6 +30,7 @@ const App = () => {
             {user ? (
               <>
                 <li><Link to="/point-b-goals">Point B Goals</Link></li>
+                <li><Link to="/my-wishes">My Wishes</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
               </>
             ) : (
@@ -55,6 +57,9 @@ const App = () => {
         </Route>
         <Route path="/point-b-goals">
           <PointBGoals />
+        </Route>
+        <Route path="/my-wishes">
+          <MyWishes />
         </Route>
         <Route component={ErrorPage} />
       </Switch>

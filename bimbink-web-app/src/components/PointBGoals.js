@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase'; // Ensure you have firebase configured
 import { collection, addDoc, getDocs, writeBatch, doc, query, where, deleteDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
-import './PointBGoals.css'; // Import custom CSS
+import '../styles/PointBGoals.css'; // Import custom CSS
 
 const PointBGoals = () => {
   const [goals, setGoals] = useState([]);
@@ -76,16 +76,16 @@ const PointBGoals = () => {
 
   return (
     <div className="container">
-      <h5>Point B Goals</h5>
+      <h6>Your Point B Goals</h6>
       <ul className="collection">
         {goals.map(goal => (
           <li key={goal.id} className="collection-item">
-            {goal.category} - {goal.pointA} - {goal.pointB} - <span className="badge">{goal.quarter}</span>
+            <span className="badge category-badge">{goal.category}</span>A: {goal.pointA} -&#62; B: {goal.pointB}<span className="badge">{goal.quarter}</span>
             <button className="btn red remove-button" onClick={() => handleRemove(goal.id)}>Remove</button>
           </li>
         ))}
       </ul>
-      <h5>Add New Goals</h5>
+      <h6>add new / more goals</h6>
       {newGoals.map((goal, index) => (
         <div key={index} className="row goal-row">
           <div className="input-field col s2">
@@ -96,6 +96,7 @@ const PointBGoals = () => {
             >
               <option value="" disabled>Select Category</option>
               <option value="Occupation">Occupation</option>
+              <option value="Income">Income</option>
               <option value="Location">Location</option>
               <option value="Family">Family</option>
               <option value="Self-development">Self-development</option>

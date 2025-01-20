@@ -16,6 +16,10 @@
   color: white;
 }
 
+.category-badge {
+  margin-right: 10px; /* Add space between category badge and text */
+}
+
 .button-container {
   margin-top: 20px; /* Add space between buttons and form */
 }

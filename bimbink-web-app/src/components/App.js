@@ -28,7 +28,7 @@ const App = () => {
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             {user ? (
               <>
-                <li><Link to="/point-b-goals">Point B</Link></li>
+                <li><Link to="/point-b-goals">Point B Goals</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
               </>
             ) : (

@@ -8,6 +8,7 @@ import Profile from './Profile';
 import ErrorPage from './ErrorPage';
 import PointBGoals from './PointBGoals';
 import MyWishes from './MyWishes';
+import WheelOfLife from './WheelOfLife';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ const App = () => {
               <>
                 <li><Link to="/point-b-goals">Point B Goals</Link></li>
                 <li><Link to="/my-wishes">108 Wishes</Link></li>
+                <li><Link to="/wheel-of-life">Wheel Of Life</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
               </>
             ) : (
@@ -60,6 +62,9 @@ const App = () => {
         </Route>
         <Route path="/my-wishes">
           <MyWishes />
+        </Route>
+        <Route path="/wheel-of-life">
+          <WheelOfLife />
         </Route>
         <Route component={ErrorPage} />
       </Switch>

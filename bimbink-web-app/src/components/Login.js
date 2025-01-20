@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useHistory, Redirect } from 'react-router-dom';
-import '../styles/Login.css';
+import React, { useState, useEffect } from "react";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useHistory, Redirect } from "react-router-dom";
+import "../styles/Login.css";
+import "../styles/Auth.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const history = useHistory();
 
@@ -21,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      history.push('/profile');
+      history.push("/profile");
     } catch (error) {
       console.error(error);
     }
@@ -32,23 +33,20 @@ const Login = () => {
   }
 
   return (
-    <div className="login-container">
-      <h5>Login</h5>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h5>Login</h5>
+        <form onSubmit={handleLogin}>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const App = () => {
             {user ? (
               <>
                 <li><Link to="/point-b-goals">Point B Goals</Link></li>
-                <li><Link to="/my-wishes">My Wishes</Link></li>
+                <li><Link to="/my-wishes">108 Wishes</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
               </>
             ) : (

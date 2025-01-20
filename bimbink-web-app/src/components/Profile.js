@@ -62,6 +62,7 @@ const Profile = () => {
           <div className="card-content">
             <h5>SMART Goals</h5>
             <p>When you define the goals, try to follow the SMART concepts: goals must be Specific, Measurable, Achievable, Relevant, Time-bound.
+              <br/><br/>
               You can read more about SMART goals <a target="_blank" href="https://en.wikipedia.org/wiki/SMART_criteria">here</a>
             </p>
           </div>

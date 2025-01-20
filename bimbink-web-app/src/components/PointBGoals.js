@@ -100,6 +100,8 @@ const PointBGoals = () => {
               <option value="Location">Location</option>
               <option value="Family">Family</option>
               <option value="Self-development">Self-development</option>
+              <option value="Health">Health</option>
+              <option value="Travels">Travels</option>
               <option value="Hobby">Hobby</option>
             </select>
           </div>

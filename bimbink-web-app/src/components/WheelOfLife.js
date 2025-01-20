@@ -6,9 +6,10 @@ import '../styles/PointBGoals.css'; // Reuse the same styles
 const WheelOfLife = () => {
   return (
     <div className="container">
-      <h6>Wheel of Life (under development)</h6>
-      <div className="card">
+      
+      <div className="card-container">
         <div className="card-content">
+        <h4>Wheel of Life (under development)</h4>
           <RadarChart />
         </div>
       </div>

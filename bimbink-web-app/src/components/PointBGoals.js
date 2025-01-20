@@ -80,7 +80,7 @@ const PointBGoals = () => {
       <ul className="collection">
         {goals.map(goal => (
           <li key={goal.id} className="collection-item">
-            <span className="badge category-badge">{goal.category}</span>A: {goal.pointA} -&#62; B: {goal.pointB}<span className="badge">{goal.quarter}</span>
+            <span className="badge category-badge">{goal.category}</span>A: {goal.pointA} -&#62; B: {goal.pointB}<span className="badge">{goal.quarter} 2025</span>
             <button className="btn red remove-button" onClick={() => handleRemove(goal.id)}>Remove</button>
           </li>
         ))}

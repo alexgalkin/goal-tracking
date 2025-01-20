@@ -68,5 +68,8 @@ This project is licensed under the MIT License.
 
 1. Configure `Github Actions` for `CI/CD`.
 2. Register and configure custom domain.
-3. Collect feedback.
-3. Improve `UI/UX`.
+3. Investigate the options to encrypt the data stored.
+4. Collect feedback.
+5. Improve `UI/UX`.
+6. Add section for `Reminders` to setup reminder emails regarding your goals.
+7. Add cookies consent and check analytics.
